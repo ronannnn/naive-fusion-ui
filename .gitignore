@@ -8,25 +8,35 @@ pnpm-debug.log*
 lerna-debug.log*
 
 node_modules
+.DS_Store
 dist
-es
-lib
 dist-ssr
+coverage
 *.local
+.env
+
+/cypress/videos/
+/cypress/screenshots/
 
 # Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
 .idea
-.DS_Store
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
+./.nuxt
+.neoconf.json
 
-# vitepress
-docs/.vitepress/dist
-docs/.vitepress/cache
-docs/docs
+test-results/
+playwright-report/
+vite.config.ts.timestamp*
+*/.vitepress/cache
+.eslintcache
 
-.nuxt
-.output
+# Auto-generated type declarations
+auto-imports.d.ts
+components.d.ts

@@ -1,12 +1,54 @@
 {
   "name": "fusion-ui",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "type": "module",
+  "version": "0.0.1",
+  "private": true,
+  "packageManager": "pnpm@9.15.4",
+  "author": "Ronan Chen",
+  "license": "MIT",
+  "repository": "ronannnn/fusion-ui",
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "story:dev": "pnpm --filter histoire story:dev --open",
+    "build": "rimraf packages/core/dist  && pnpm run --filter fusion-ui build",
+    "build-only": "rimraf packages/core/dist  && pnpm run -r build-only",
+    "docs:install": "pnpm --filter docs install",
+    "docs:dev": "pnpm --filter docs docs:dev",
+    "docs:build": "pnpm --filter docs docs:build",
+    "docs:gen": "pnpm --filter docs docs:gen",
+    "docs:contributors": "pnpm --filter docs docs:contributors",
+    "prepare": "pnpm simple-git-hooks",
+    "test": "pnpm --filter fusion-ui test",
+    "test-update": "pnpm --filter fusion-ui test-update",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "bumpp": "bumpp package.json packages/*/package.json docs/package.json",
+    "pub:release": "cd packages/core && pnpm pub:release"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "devDependencies": {
+    "@antfu/eslint-config": "^3.15.0",
+    "@commitlint/cli": "^19.6.1",
+    "@commitlint/config-conventional": "^19.6.0",
+    "bumpp": "^9.10.1",
+    "eslint": "^9.18.0",
+    "lint-staged": "^15.4.1",
+    "pnpm": "^9.15.4",
+    "rimraf": "^6.0.1",
+    "simple-git-hooks": "^2.11.1",
+    "typescript": "^5.7.3"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "simple-git-hooks": {
+    "pre-commit": "pnpm lint-staged",
+    "commit-msg": "pnpm commitlint --edit ${1}"
+  },
+  "lint-staged": {
+    "*": "eslint --fix"
+  }
 }
