@@ -1,9 +1,6 @@
 import { resolve } from 'node:path'
-import nuxtUi from '@nuxt/ui/vite'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
-import AutoImports from 'unplugin-auto-import/vite'
-import VueComponents from 'unplugin-vue-components'
 import { defineConfig } from 'vite'
 import dts from 'vite-plugin-dts'
 import pkg from './package.json'
@@ -23,11 +20,6 @@ export default defineConfig({
       cleanVueFileName: true,
       exclude: ['src/test/**', 'src/**/story/**', 'src/**/*.story.vue'],
       rollupTypes: true,
-    }),
-    nuxtUi(),
-    AutoImports({ imports: ['vue'] }),
-    VueComponents.vite({
-      dirs: ['../playground/app/components'],
     }),
   ],
   resolve: {

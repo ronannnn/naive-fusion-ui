@@ -1,2 +1,2 @@
-export { default as FTooltipButton } from './index.vue'
+export { default as FTooltipButton } from './TooltipButton.vue'
 export * from './types'
