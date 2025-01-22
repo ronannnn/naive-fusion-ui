@@ -44,7 +44,7 @@ export default defineConfig({
     target: 'esnext',
     sourcemap: true,
     lib: {
-      name: 'fusion-ui',
+      name: 'naive-fusion-ui',
       fileName: (format, name) => {
         currentFormat = format
         return `${name}.${format === 'es' ? 'js' : 'cjs'}`
