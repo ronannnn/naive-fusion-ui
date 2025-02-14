@@ -39,9 +39,9 @@ async function handleClick(e: MouseEvent) {
   >
     <template #trigger>
       <NButton v-bind="props" :loading="btnLoading" @click="handleClick">
-        <template #icon>
+        <template v-if="iconClass" #icon>
           <slot name="icon">
-            <div :class="iconClass" />
+            <div class="iconify" :class="iconClass" />
           </slot>
         </template>
         <template #default>

@@ -1,6 +1,7 @@
 import type {
   DropdownOption,
   PopoverPlacement,
+  PopoverProps,
   PopoverTrigger,
 } from 'naive-ui'
 import type { CommonButtonProps } from '../types'
@@ -8,11 +9,13 @@ import type { CommonButtonProps } from '../types'
 export type DropdownButtonOption = {
   syncFn?: () => void
   asyncFn?: () => Promise<void>
+  iconClass?: string
 } & DropdownOption
 
 export type DropdownButtonProps = {
   // dropdown
-  dropdownButtonOptions: DropdownButtonOption[]
-  dropdownPlacement?: PopoverPlacement
+  options: DropdownButtonOption[]
+  placement?: PopoverPlacement
   trigger?: PopoverTrigger
+  width?: PopoverProps['width']
 } & CommonButtonProps

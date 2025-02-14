@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { DropdownButtonProps } from './types'
 import { NButton, NDropdown } from 'naive-ui'
-import { computed, ref } from 'vue'
+import { computed, h, ref } from 'vue'
 import { findDropdownButtonOptionsKeyRecursively } from './utils'
 
 const props = withDefaults(defineProps<DropdownButtonProps>(), {
@@ -10,8 +10,22 @@ const props = withDefaults(defineProps<DropdownButtonProps>(), {
 const fnLoading = ref(false)
 const btnLoading = computed(() => fnLoading.value || props.loading)
 
+function adaptOptions(options: DropdownButtonProps['options']) {
+  return options.map((option) => {
+    const newOption = { ...option }
+    if (option.iconClass && !option.icon) {
+      newOption.icon = () => h('div', { class: ['iconify', option.iconClass] })
+    }
+    if (option.children) {
+      newOption.children = adaptOptions(option.children)
+    }
+    return newOption
+  })
+}
+const adaptedOptions = computed(() => adaptOptions(props.options))
+
 async function onSelect(key: string | number) {
-  const foundDropdownButtonOption = findDropdownButtonOptionsKeyRecursively(props.dropdownButtonOptions, key)
+  const foundDropdownButtonOption = findDropdownButtonOptionsKeyRecursively(props.options, key)
   if (!foundDropdownButtonOption) {
     console.warn('Popselect option not found, key is:', key)
     return
@@ -39,14 +53,15 @@ async function onSelect(key: string | number) {
   <NDropdown
     :trigger="trigger"
     :disabled="btnLoading || props.disabled"
-    :placement="dropdownPlacement"
-    :options="dropdownButtonOptions"
+    :placement="placement"
+    :options="adaptedOptions"
+    :width="width"
     @select="onSelect"
   >
     <NButton v-bind="props" :loading="btnLoading" :disabled="disabled" @click="e => e.stopPropagation()">
-      <template #icon>
+      <template v-if="iconClass" #icon>
         <slot name="icon">
-          <div v-if="iconClass" :class="iconClass" />
+          <div class="iconify" :class="iconClass" />
         </slot>
       </template>
       <template #default>

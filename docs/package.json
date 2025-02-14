@@ -1,0 +1,30 @@
+{
+  "name": "docs",
+  "type": "module",
+  "version": "0.0.2",
+  "scripts": {
+    "docs:dev": "vitepress dev",
+    "docs:build": "vitepress build",
+    "docs:preview": "vitepress preview"
+  },
+  "peerDependencies": {
+    "typescript": "*"
+  },
+  "dependencies": {
+    "@vueuse/core": "^12.0.0",
+    "naive-fusion-ui": "link:../packages/core",
+    "vue": "^3.5.13"
+  },
+  "devDependencies": {
+    "@iconify-json/tabler": "^1.1.120",
+    "@iconify/tailwind4": "^1.0.3",
+    "@tailwindcss/vite": "^4.0.4",
+    "@vue/tsconfig": "^0.5.1",
+    "markdown-it": "^14.1.0",
+    "markdown-it-anchor": "^9.0.1",
+    "naive-ui": "^2.41.0",
+    "tailwindcss": "^4.0.4",
+    "tsx": "^4.16.0",
+    "vitepress": "^1.2.3"
+  }
+}

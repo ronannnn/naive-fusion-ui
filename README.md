@@ -1,6 +1,6 @@
 # FUSION UI
 
-Encapsulates NuxtUI, and RekaUI into a single package.
+Encapsulates Naive UI into a single package.
 
 ## Setup
 

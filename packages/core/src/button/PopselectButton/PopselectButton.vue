@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import type { SelectOption } from 'naive-ui'
 import type { PopselectButtonProps } from './types'
+import { isEmptyString } from '@/shared'
 import { NButton, NInput, NPopselect } from 'naive-ui'
 import { computed, ref } from 'vue'
-import { isEmptyString } from '~/src/composables'
 
 const props = withDefaults(defineProps<PopselectButtonProps>(), {
   trigger: 'click',
@@ -12,7 +12,7 @@ const fnLoading = ref(false)
 const btnLoading = computed(() => fnLoading.value || props.loading)
 const searchContent = ref('')
 const filteredOptions = computed<SelectOption[]>(() => props.options.filter((option) => {
-  if (!props.enableSearch || isEmptyString(searchContent.value)) {
+  if (!props.searchable || isEmptyString(searchContent.value)) {
     return true
   }
   return String(option.label).includes(searchContent.value)
@@ -31,16 +31,16 @@ const filteredOptions = computed<SelectOption[]>(() => props.options.filter((opt
     @update-value="onUpdateValue"
   >
     <NButton v-bind="props" :loading="btnLoading" :disabled="disabled">
-      <template #icon>
+      <template v-if="iconClass" #icon>
         <slot name="icon">
-          <div v-if="iconClass" :class="iconClass" />
+          <div class="iconify" :class="iconClass" />
         </slot>
       </template>
       <template #default>
         <slot />
       </template>
     </NButton>
-    <template v-if="props.enableSearch" #header>
+    <template v-if="props.searchable" #header>
       <NInput
         v-model:value="searchContent"
         clearable
