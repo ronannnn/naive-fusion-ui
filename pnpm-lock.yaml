@@ -72,9 +72,6 @@ importers:
       markdown-it-anchor:
         specifier: ^9.0.1
         version: 9.2.0(@types/markdown-it@14.1.2)(markdown-it@14.1.0)
-      naive-ui:
-        specifier: ^2.41.0
-        version: 2.41.0(vue@3.5.13(typescript@5.7.3))
       tailwindcss:
         specifier: ^4.0.4
         version: 4.0.4

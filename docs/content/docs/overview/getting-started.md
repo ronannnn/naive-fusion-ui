@@ -14,19 +14,19 @@ Install the component from your command line.
 ::: code-group
 
 ```sh [pnpm]
-pnpm add naive-ui naive-fusion-ui
+pnpm add naive-fusion-ui
 ```
 
 ```sh [npm]
-npm add naive-ui naive-fusion-ui
+npm add naive-fusion-ui
 ```
 
 ```sh [yarn]
-yarn add naive-ui naive-fusion-ui
+yarn add naive-fusion-ui
 ```
 
 ```sh [bun]
-bun add naive-ui naive-fusion-ui
+bun add naive-fusion-ui
 ```
 
 :::
