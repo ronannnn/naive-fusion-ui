@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { NCard, NCollapseTransition, NTooltip } from 'naive-ui'
+import { NCard, NCollapseTransition, NScrollbar, NTooltip } from 'naive-ui'
 import { codeToHtml } from 'shiki'
 import { defineAsyncComponent, h, ref, watch } from 'vue'
 
@@ -80,7 +80,9 @@ watch(
     <component :is="Desc" v-if="showDesc" class="mb-3" />
     <component :is="Component" />
     <NCollapseTransition :show="!codeCollapsed">
-      <div class="mt-3 p-3 bg-[#f9f9fc] dark:bg-[#121212] rounded-md" v-html="shikiHtml" />
+      <NScrollbar x-scrollable>
+        <div class="mt-6 p-3 bg-[#f9f9fc] dark:bg-[#121212] rounded-md" v-html="shikiHtml" />
+      </NScrollbar>
     </NCollapseTransition>
   </NCard>
 </template>
