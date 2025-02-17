@@ -88,6 +88,7 @@ export default defineConfig({
               { text: 'Dropdown Button', link: '/docs/components/buttons/dropdown-button' },
             ],
           },
+          { text: 'Scroll', link: '/docs/components/scroll' },
         ],
       },
       {

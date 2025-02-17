@@ -5,13 +5,13 @@ import { NA, NText } from 'naive-ui'
 <template>
   <div>
     带有
-    <NA>
+    <NA href="https://www.naiveui.com/zh-CN/light/components/popconfirm" target="_blank">
       <NText code>
         NPopconfirm
       </NText>
     </NA>
     的
-    <NA>
+    <NA href="https://www.naiveui.com/zh-CN/light/components/button" target="_blank">
       <NText code>
         NButton
       </NText>
