@@ -3,7 +3,7 @@ import { FScroll } from 'naive-fusion-ui'
 </script>
 
 <template>
-  <FScroll vertical class="h-32 w-20 border border-gray-300 rounded-md">
+  <FScroll vertical class="h-32 border border-gray-300 dark:border-gray-700 rounded-md">
     <div class="p-3">
       <div v-for="i in 10" :key="i">
         Item {{ i }}

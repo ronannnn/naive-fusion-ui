@@ -78,7 +78,9 @@ watch(
       </NTooltip>
     </template>
     <component :is="Desc" v-if="showDesc" class="mb-3" />
-    <component :is="Component" />
+    <div class="flex">
+      <component :is="Component" />
+    </div>
     <NCollapseTransition :show="!codeCollapsed">
       <NScrollbar x-scrollable>
         <div class="mt-6 p-3 bg-[#f9f9fc] dark:bg-[#121212] rounded-md" v-html="shikiHtml" />

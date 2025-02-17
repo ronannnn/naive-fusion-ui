@@ -2,7 +2,9 @@
 import type { DndProps } from './types'
 import { VueDraggable } from 'vue-draggable-plus'
 
-defineProps<DndProps>()
+withDefaults(defineProps<DndProps>(), {
+  dndGhostClass: 'opacity-32',
+})
 const model = defineModel<any>()
 </script>
 
@@ -15,16 +17,12 @@ const model = defineModel<any>()
       :animation="200"
       :handle="handle"
       :group="group"
-      ghost-class="drag-ghost"
+      :ghost-class="dndGhostClass"
+      :drag-class="dndDragClass"
       @add="onAfterDrag"
     >
       <slot />
     </VueDraggable>
+    <slot name="footer" />
   </div>
 </template>
-
-<style>
-.drag-ghost {
-  opacity: 0;
-}
-</style>

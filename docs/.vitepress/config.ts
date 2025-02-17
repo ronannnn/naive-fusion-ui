@@ -90,6 +90,7 @@ export default defineConfig({
           },
           { text: 'Scroll', link: '/docs/components/scroll' },
           { text: 'Hover Box', link: '/docs/components/hover-box' },
+          { text: 'Dnd', link: '/docs/components/dnd' },
         ],
       },
       {
