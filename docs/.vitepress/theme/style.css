@@ -1,4 +1,6 @@
 @import "tailwindcss";
+@import "naive-fusion-ui";
+
 @plugin "@iconify/tailwind4" {
   prefixes: tabler;
 }

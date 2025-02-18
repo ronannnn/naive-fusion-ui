@@ -35,6 +35,7 @@ export default defineConfig({
     minify: false,
     target: 'esnext',
     sourcemap: true,
+    cssCodeSplit: true,
     lib: {
       name: 'naive-fusion-ui',
       fileName: (format, name) => {
@@ -44,12 +45,14 @@ export default defineConfig({
       entry: {
         index: resolve(__dirname, 'src/index.ts'),
         constant: resolve(__dirname, 'constant/index.ts'),
+        styles: resolve(__dirname, 'src/index.css'),
       },
     },
     rollupOptions: {
       external: [
         ...Object.keys(pkg.dependencies ?? {}),
         ...Object.keys(pkg.peerDependencies ?? {}),
+        ...Object.keys(pkg.devDependencies ?? {}),
       ],
       output: {
         // Don't rely on preserveModules

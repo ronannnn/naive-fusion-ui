@@ -76,7 +76,7 @@ defineExpose({ instance, scrollByClientX, scrollByClientY })
 
 <template>
   <div ref="bsWrapper" class="overflow-hidden">
-    <div ref="bsContent" class="inline-block">
+    <div ref="bsContent" class="inline-block" :class="`${horizontal && 'h-full'} ${vertical && 'w-full'}`">
       <slot />
     </div>
   </div>

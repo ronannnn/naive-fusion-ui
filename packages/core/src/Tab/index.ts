@@ -1,0 +1,6 @@
+export { default as FTab } from './Tab.vue'
+export { default as FTabItem } from './TabItem.vue'
+export { default as FTabItemContextMenu } from './TabItemContextMenu.vue'
+export { default as FTabList } from './TabList.vue'
+export { default as FTabSelector } from './TabSelector.vue'
+export * from './types'

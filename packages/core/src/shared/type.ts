@@ -1,5 +1,5 @@
 import dayjs from 'dayjs'
-import { isEqual } from 'lodash-es'
+import { isEqual } from 'lodash'
 
 export function useType() {
   const removeDuplicates = <T>(arr: (keyof T)[]): (keyof T)[] => {

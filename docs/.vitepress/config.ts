@@ -75,6 +75,14 @@ export default defineConfig({
         ],
       },
       {
+        text: 'Composables',
+        icon: 'lucide:square-dashed-mouse-pointer',
+        link: '/docs/composables',
+        items: [
+          { text: 'Color', link: '/docs/composables/color' },
+        ],
+      },
+      {
         text: 'Components',
         icon: 'lucide:box',
         link: '/docs/components/',
@@ -91,6 +99,7 @@ export default defineConfig({
           { text: 'Scroll', link: '/docs/components/scroll' },
           { text: 'Hover Box', link: '/docs/components/hover-box' },
           { text: 'Dnd', link: '/docs/components/dnd' },
+          { text: 'Tab', link: '/docs/components/tab' },
         ],
       },
       {
