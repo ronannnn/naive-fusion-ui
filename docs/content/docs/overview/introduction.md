@@ -5,10 +5,7 @@ description: An open-source UI component library built with Naive UI and Vue.js.
 
 # Introduction
 
-<Description>
-
-An open-source UI component library built with Naive UI and Vue.js.
-</Description>
+An open-source UI component library built with Naive UI and Vue.js. Inspired by [Soybean Admin](https://github.com/soybeanjs/soybean-admin)
 
 # Credits
 
