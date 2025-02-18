@@ -100,6 +100,12 @@ export default defineConfig({
           { text: 'Hover Box', link: '/docs/components/hover-box' },
           { text: 'Dnd', link: '/docs/components/dnd' },
           { text: 'Tab', link: '/docs/components/tab' },
+          {
+            text: 'Layout',
+            items: [
+              { text: 'Simple Layout', link: '/docs/components/layouts/simple-layout' },
+            ],
+          },
         ],
       },
       {
