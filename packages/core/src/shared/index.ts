@@ -1,3 +1,7 @@
+export * from './api'
+export * from './boolean'
 export * from './color'
+export * from './query'
 export * from './string'
+export * from './table'
 export * from './type'

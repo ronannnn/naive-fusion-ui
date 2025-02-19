@@ -100,6 +100,7 @@ export default defineConfig({
           { text: 'Hover Box', link: '/docs/components/hover-box' },
           { text: 'Dnd', link: '/docs/components/dnd' },
           { text: 'Tab', link: '/docs/components/tab' },
+          { text: 'Async Select', link: '/docs/components/async-select' },
           {
             text: 'Layout',
             items: [
