@@ -9,6 +9,6 @@ title: Simple Layout
 <ComponentPreviewGroup
   category="SimpleLayout"
   :components="[
-    { name: 'Base', title: '基础用法' },
+    { name: 'Base', title: '基础用法', resizable: true },
   ]"
 />

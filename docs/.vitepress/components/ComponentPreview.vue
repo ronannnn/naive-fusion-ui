@@ -2,6 +2,7 @@
 import { NCard, NCollapseTransition, NScrollbar, NTooltip } from 'naive-ui'
 import { codeToHtml } from 'shiki'
 import { defineAsyncComponent, h, ref, watch } from 'vue'
+import ResizableBox from './ResizableBox.vue'
 
 const props = withDefaults(defineProps<{
   category: string
@@ -9,6 +10,9 @@ const props = withDefaults(defineProps<{
   title: string
   disableCode?: boolean
   type?: 'demo' | 'example'
+
+  resizable?: boolean
+  resizableContainerHeight?: number
 }>(), {
   type: 'demo',
 })
@@ -79,7 +83,10 @@ watch(
     </template>
     <component :is="Desc" v-if="showDesc" class="mb-3" />
     <div class="flex">
-      <component :is="Component" />
+      <ResizableBox v-if="resizable" :height="resizableContainerHeight ?? 320">
+        <component :is="Component" />
+      </ResizableBox>
+      <component :is="Component" v-else />
     </div>
     <NCollapseTransition :show="!codeCollapsed">
       <NScrollbar x-scrollable>

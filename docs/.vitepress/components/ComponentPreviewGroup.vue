@@ -4,6 +4,8 @@ withDefaults(defineProps<{
   components: {
     name: string
     title: string
+    resizable?: boolean
+    resizableContainerHeight?: number
   }[]
   type?: 'demo' | 'example'
 }>(), {
@@ -19,6 +21,8 @@ withDefaults(defineProps<{
       :category="category"
       :name="component.name"
       :title="`${component.title}`"
+      :resizable="component.resizable"
+      :resizable-container-height="component.resizableContainerHeight"
     />
   </div>
 </template>
