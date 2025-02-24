@@ -18,4 +18,7 @@ export interface FloatingLabelInputProps {
   onClear?: InputProps['onClear']
   onInput?: InputProps['onInput']
   onUpdateValue?: InputProps['onUpdate:value']
+
+  prefixIconClass?: string
+  suffixIconClass?: string
 }

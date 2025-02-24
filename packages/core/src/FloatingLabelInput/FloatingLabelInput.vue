@@ -6,23 +6,37 @@ import { computed, ref } from 'vue'
 
 const props = defineProps<FloatingLabelInputProps>()
 
+const slots = defineSlots<SimpleLayoutSlots>()
 const inputRef = ref<InputInst | null>(null)
 function focus() {
   inputRef.value?.focus()
+}
+
+type SlotFn = (props?: Record<string, unknown>) => any
+export interface SimpleLayoutSlots {
+  'clear-icon'?: SlotFn
+  'password-invisible-icon'?: SlotFn
+  'password-visible-icon'?: SlotFn
+  'count'?: SlotFn
+  'prefix'?: SlotFn
+  'separator'?: SlotFn
+  'suffix'?: SlotFn
 }
 const inputFocus = ref(false)
 const isValueEmpty = computed(() => (props.value?.length ?? 0) === 0)
 const moveUp = computed(() => inputFocus.value || !isValueEmpty.value)
 const labelStartClass = computed<string>(() => {
+  // 有prefix内容且没有movedUp时，设置的start需要有offset
+  const setLabelOffset = (Boolean(slots.prefix) || props.prefixIconClass) && !moveUp.value
   switch (props.size) {
     case 'small':
-      return 'start-1.5'
+      return setLabelOffset ? 'start-7.5' : 'start-1.5'
     case 'medium':
-      return 'start-2'
+      return setLabelOffset ? 'start-8' : 'start-2'
     case 'large':
-      return 'start-2.5'
+      return setLabelOffset ? 'start-8.5' : 'start-2.5'
     default:
-      return 'start-1.5'
+      return setLabelOffset ? 'start-7.5' : 'start-1.5'
   }
 })
 const movedLabelClass = computed<string>(() => {
@@ -77,13 +91,17 @@ defineExpose({ focus })
         <slot name="password-visible-icon" />
       </template>
       <template #prefix>
-        <slot name="prefix" />
+        <slot name="prefix">
+          <div v-if="prefixIconClass" class="iconify" :class="prefixIconClass" />
+        </slot>
       </template>
       <template #separator>
         <slot name="separator" />
       </template>
       <template #suffix>
-        <slot name="#suffix" />
+        <slot name="suffix">
+          <div v-if="suffixIconClass" class="iconify" :class="suffixIconClass" />
+        </slot>
       </template>
     </NInput>
     <span
