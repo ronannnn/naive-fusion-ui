@@ -67,7 +67,7 @@ export default defineConfig({
     sidebar: [
       {
         text: 'Overview',
-        icon: 'i-tabler-rocket',
+        icon: 'tabler--rocket',
         items: [
           { text: 'Introduction', link: '/docs/overview/introduction' },
           { text: 'Getting Started', link: '/docs/overview/getting-started' },
@@ -101,6 +101,7 @@ export default defineConfig({
           { text: 'Dnd', link: '/docs/components/dnd' },
           { text: 'Tab', link: '/docs/components/tab' },
           { text: 'Async Select', link: '/docs/components/async-select' },
+          { text: 'Floating Label Input', link: '/docs/components/floating-label-input' },
           {
             text: 'Layout',
             items: [

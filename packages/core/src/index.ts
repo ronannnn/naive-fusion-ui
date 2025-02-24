@@ -1,6 +1,7 @@
 export * from './AsyncSelect'
 export * from './button'
 export * from './Dnd'
+export * from './FloatingLabelInput'
 export * from './HoverBox'
 export * from './layout'
 export * from './Scroll'
