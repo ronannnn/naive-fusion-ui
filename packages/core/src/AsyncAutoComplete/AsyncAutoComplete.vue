@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import type { AutoCompleteOption, AutoCompleteProps, SelectOption } from 'naive-ui'
 import type { AsyncAutoCompleteProps } from './types'
-import { isEmptyString, useQuerying, type WhereQuery, type WhereQueryItem } from '@/shared'
+import { isEmptyString, isString, useQuerying, type WhereQuery, type WhereQueryItem } from '@/shared'
 import { useDebounceFn } from '@vueuse/core'
-import { NAutoComplete } from 'naive-ui'
+import { NAutoComplete, NEmpty } from 'naive-ui'
 import { ref, watch } from 'vue'
 
 const props = withDefaults(defineProps<AsyncAutoCompleteProps<any>>(), {
@@ -11,6 +11,7 @@ const props = withDefaults(defineProps<AsyncAutoCompleteProps<any>>(), {
   extraOrderQuery: () => [{ field: 'createdAt', order: 'desc' }],
   size: 'small',
   queryDebounceDelay: 512,
+  empty: '未查询到数据，该项可自由填写',
 })
 const value = defineModel<string | null>('value')
 
@@ -115,8 +116,11 @@ const renderLabel: AutoCompleteProps['renderLabel'] = (option: SelectOption) => 
     <template #suffix>
       <slot name="suffix" />
     </template>
-    <template v-if="empty" #empty>
-      <component :is="empty" />
+    <template v-if="Boolean(empty)" #empty>
+      <NEmpty v-if="isString(empty)">
+        {{ empty }}
+      </NEmpty>
+      <component :is="empty" v-else />
     </template>
   </NAutoComplete>
 </template>

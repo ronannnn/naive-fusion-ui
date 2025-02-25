@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import type { SelectInst, SelectOption, SelectProps } from 'naive-ui'
 import type { AsyncSelectProps } from './types'
-import { isEmptyString, useQuerying, type WhereQuery, type WhereQueryItem } from '@/shared'
+import { isEmptyString, isString, useQuerying, type WhereQuery, type WhereQueryItem } from '@/shared'
 import { useDebounceFn } from '@vueuse/core'
-import { NSelect } from 'naive-ui'
+import { NEmpty, NSelect } from 'naive-ui'
 import { computed, ref } from 'vue'
 
 const props = withDefaults(defineProps<AsyncSelectProps<any>>(), {
@@ -156,8 +156,11 @@ defineExpose({ focus: () => selectRef.value?.focus() })
     }"
     @blur="focused = false"
   >
-    <template v-if="empty" #empty>
-      <component :is="empty" />
+    <template v-if="Boolean(empty)" #empty>
+      <NEmpty v-if="isString(empty)">
+        {{ empty }}
+      </NEmpty>
+      <component :is="empty" v-else />
     </template>
   </NSelect>
 </template>
