@@ -55,9 +55,9 @@ async function handleQuery(queryStr: string) {
   if (!focused.value) {
     return
   }
-  // if selected, do not query
-  if (selected.value) {
-    selected.value = false
+  // if selected and queryStr is empty, do not query
+  // 此处跳过原因：上次查询并选择后，如果用户不输入新的查询词，那么不再查询
+  if (selected.value && isEmptyString(queryStr)) {
     return
   }
   startQuerying()
@@ -83,6 +83,9 @@ async function handleQuery(queryStr: string) {
   }
   finally {
     endQuerying()
+    // queried, so selected should be false
+    // 第一次查询并选择，第二次查询但是不选择且清空了输入框，selected应该为false，否则再次点击输入框时，不会再次查询
+    selected.value = false
   }
 }
 const debouncedQueryFn = useDebounceFn(handleQuery, props.queryDebounceDelay)
@@ -149,6 +152,7 @@ defineExpose({ focus: () => selectRef.value?.focus() })
     @clear="() => {
       queriedData = []
       value = null
+      selected = false
     }"
     @blur="focused = false"
   >

@@ -17,8 +17,8 @@ const value = defineModel<string | null>('value')
 const { querying, startQuerying, endQuerying } = useQuerying()
 const queriedData = ref<any[]>([])
 const queriedOptions = ref<AutoCompleteOption[]>([])
-const selected = ref(false)
 const focused = ref(false)
+const prevSelectedVal = ref<string | null>(null)
 async function handleQuery() {
   if (!props.queryFn) {
     console.error('queryFn is required')
@@ -28,9 +28,8 @@ async function handleQuery() {
   if (!focused.value) {
     return
   }
-  // if selected, do not query
-  if (selected.value) {
-    selected.value = false
+  // 如果本次查询的值和上次选择的值相同，则不再查询
+  if (prevSelectedVal.value === value.value) {
     return
   }
   startQuerying()
@@ -58,6 +57,9 @@ async function handleQuery() {
   }
   finally {
     endQuerying()
+    // 第一次查询并选择，第二次录入1个字符查询后，再删去这个字符，会导致查询结果不一致
+    // 因此只要有查询，就重置prevSelectedVal
+    prevSelectedVal.value = null
   }
 }
 const debouncedQueryFn = useDebounceFn(handleQuery, 512)
@@ -67,14 +69,14 @@ watch(
     debouncedQueryFn()
   },
 )
-function onSelect(newVal: string) {
-  selected.value = true
-  const foundModel = queriedData.value.find(p => p[props.valueField] === newVal)
+function onSelect(newValueFieldVal: any) {
+  const foundModel = queriedData.value.find(p => p[props.valueField] === newValueFieldVal)
   if (!foundModel) {
     return
   }
   props.triggerAfterSelected?.(foundModel)
-  value.value = foundModel[props.valueField]
+  value.value = foundModel[props.labelField]
+  prevSelectedVal.value = foundModel[props.labelField]
 }
 const renderLabel: AutoCompleteProps['renderLabel'] = (option: SelectOption) => {
   const foundModel = queriedData.value.find(p => p[props.valueField] === option.value)

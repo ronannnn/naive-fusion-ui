@@ -1,15 +1,15 @@
 ---
-title: Async Select
+title: Async Auto Complete
 ---
 
-# Scroll
+# Async Auto Complete
 
-<CategoryDesc category="AsyncSelect" />
+<CategoryDesc category="AsyncAutoComplete" />
 
 <br />
 
 <ComponentPreviewGroup
-  category="AsyncSelect"
+  category="AsyncAutoComplete"
   :components="[
     { name: 'Base', title: '基本用法' },
   ]"

@@ -2,7 +2,7 @@
 title: Async Select
 ---
 
-# Scroll
+# Async Select
 
 <CategoryDesc category="AsyncSelect" />
 

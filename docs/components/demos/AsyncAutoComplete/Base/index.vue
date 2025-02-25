@@ -19,7 +19,7 @@ async function queryFn(query: QueryTemplate<User>) {
     error: null,
     data: {
       // mock data
-      list: (query.whereQuery?.length ?? 0) > 0 ? mockList.filter(item => item.name.includes(query.whereQuery?.[0].items?.[0].value)) : mockList,
+      list: (query.whereQuery?.length ?? 0) > 0 ? mockList.filter(item => item.fullName.includes(query.whereQuery?.[0].items?.[0].value)) : mockList,
       total: 2,
       pageNum: 1,
       pageSize: 10,
@@ -31,7 +31,7 @@ async function queryFn(query: QueryTemplate<User>) {
 <template>
   <FAsyncAutoComplete
     :query-fn="queryFn"
-    :query-fields="[{ field: 'name', opr: 'like' }]"
+    :query-fields="[{ field: 'fullName', opr: 'like' }]"
     label-field="fullName"
   />
 </template>
