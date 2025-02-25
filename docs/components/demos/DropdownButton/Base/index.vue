@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import type { DropdownButtonOption } from 'naive-fusion-ui'
-import { FDropdownButton } from 'naive-fusion-ui'
+import type { DropdownButtonOption } from 'n-fusion-ui'
+import { FDropdownButton } from 'n-fusion-ui'
 import { useMessage } from 'naive-ui'
 
 const msg = useMessage()

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { FTooltipButton } from 'naive-fusion-ui'
+import { FTooltipButton } from 'n-fusion-ui'
 </script>
 
 <template>

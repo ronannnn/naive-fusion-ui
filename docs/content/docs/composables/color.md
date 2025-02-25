@@ -36,13 +36,13 @@ title: Tailwindcss Color
 
 ```css{2}
 @import "tailwindcss";
-@import "naive-fusion-ui";
+@import "n-fusion-ui";
 ```
 
 ### 2. 初始化颜色变量
 
 ```ts
-import { saveColorVarsToHtml } from 'naive-fusion-ui'
+import { saveColorVarsToHtml } from 'n-fusion-ui'
 
 saveColorVarsToHtml({
   primary: '#6366f1',

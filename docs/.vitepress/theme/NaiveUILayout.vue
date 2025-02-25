@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import defu from 'defu'
-import { getNaiveColor, saveColorVarsToHtml } from 'naive-fusion-ui'
+import { getNaiveColor, saveColorVarsToHtml } from 'n-fusion-ui'
 import { darkTheme, type GlobalThemeOverrides, NConfigProvider, NMessageProvider } from 'naive-ui'
 import { useData } from 'vitepress'
 import DefaultTheme from 'vitepress/theme'

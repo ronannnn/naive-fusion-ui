@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { FPopselectButton } from 'naive-fusion-ui'
+import { FPopselectButton } from 'n-fusion-ui'
 import { type SelectOption, useMessage } from 'naive-ui'
 
 const msg = useMessage()

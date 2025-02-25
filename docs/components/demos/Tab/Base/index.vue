@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import type { TabItemProps } from 'naive-fusion-ui'
-import { FTab } from 'naive-fusion-ui'
+import type { TabItemProps } from 'n-fusion-ui'
+import { FTab } from 'n-fusion-ui'
 import { ref } from 'vue'
 
 const items = ref<TabItemProps[]>([

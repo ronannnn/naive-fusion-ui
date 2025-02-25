@@ -7,4 +7,4 @@ description: Discover the latest release of Naive Fusion UI.
 
 Discover the latest release of Naive Fusion UI.
 
-[Latest releases on github](https://github.com/ronannnn/naive-fusion-ui/releases)
+[Latest releases on github](https://github.com/ronannnn/n-fusion-ui/releases)

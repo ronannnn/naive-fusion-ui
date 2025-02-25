@@ -37,7 +37,7 @@ export default defineConfig({
     sourcemap: true,
     cssCodeSplit: true,
     lib: {
-      name: 'naive-fusion-ui',
+      name: 'n-fusion-ui',
       fileName: (format, name) => {
         currentFormat = format
         return `${name}.${format === 'es' ? 'js' : 'cjs'}`

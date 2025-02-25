@@ -76,7 +76,7 @@ const floatingSiderWidth = computed<string>({
 
 const dragging = ref(false)
 
-// 保证naive-fusion-ui-simple-layout挂载到DOM中
+// 保证n-fusion-ui-simple-layout挂载到DOM中
 const layoutMounted = ref(false)
 onMounted(() => {
   layoutMounted.value = true
@@ -85,7 +85,7 @@ onMounted(() => {
 
 <template>
   <NSplit
-    id="naive-fusion-ui-simple-layout"
+    id="n-fusion-ui-simple-layout"
     v-model:size="embeddedSiderWidth"
     direction="horizontal"
     :pane1-class="`flex ${!dragging && 'transition-all duration-300'}`"
@@ -110,7 +110,7 @@ onMounted(() => {
           v-if="floatingSiderVisible && layoutMounted"
           :width="floatingSiderWidth"
           placement="left"
-          to="#naive-fusion-ui-simple-layout"
+          to="#n-fusion-ui-simple-layout"
           :trap-focus="false"
           :block-scroll="false"
           :show="!siderCollapsed"

@@ -1,5 +1,5 @@
 @import "tailwindcss";
-@import "naive-fusion-ui";
+@import "n-fusion-ui";
 
 @plugin "@iconify/tailwind4" {
   prefixes: tabler, mdi;

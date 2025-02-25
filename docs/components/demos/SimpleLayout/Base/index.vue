@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useElementSize } from '@vueuse/core'
-import { FHoverBox, FSimpleLayout } from 'naive-fusion-ui'
+import { FHoverBox, FSimpleLayout } from 'n-fusion-ui'
 import { computed, ref, watch } from 'vue'
 
 const siderWidth = ref(80)

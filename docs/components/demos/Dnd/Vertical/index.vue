@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { FDnd } from 'naive-fusion-ui'
+import { FDnd } from 'n-fusion-ui'
 import { ref } from 'vue'
 
 interface ItemProps {

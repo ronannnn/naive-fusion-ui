@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import type { QueryTemplate } from 'naive-fusion-ui'
-import { FAsyncAutoComplete } from 'naive-fusion-ui'
+import type { QueryTemplate } from 'n-fusion-ui'
+import { FAsyncAutoComplete } from 'n-fusion-ui'
 
 interface User {
   id: number

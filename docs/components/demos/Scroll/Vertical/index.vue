@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { FScroll } from 'naive-fusion-ui'
+import { FScroll } from 'n-fusion-ui'
 </script>
 
 <template>

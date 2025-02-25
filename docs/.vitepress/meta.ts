@@ -11,12 +11,12 @@ export const gstatic = 'https://fonts.gstatic.com'
 export const font = `${googleapis}/css2?family=Inter:wght@100..900&display=swap`
 
 /* vitepress head */
-export const ogUrl = 'https://naive-fusion-ui.com/'
+export const ogUrl = 'https://n-fusion-ui.com/'
 export const ogImage = `${ogUrl}og.jpg`
 
 /* GitHub and social links */
-export const github = 'https://github.com/ronannnn/naive-fusion-ui'
-export const releases = 'https://github.com/ronannnn/naive-fusion-ui/releases'
+export const github = 'https://github.com/ronannnn/n-fusion-ui'
+export const releases = 'https://github.com/ronannnn/n-fusion-ui/releases'
 // export const discord = 'https://chat.unovue.com'
 // export const mastodon = "https://elk.zone/m.webtoo.ls/@vitest";
 // export const twitter = "https://twitter.com/vitest_dev";

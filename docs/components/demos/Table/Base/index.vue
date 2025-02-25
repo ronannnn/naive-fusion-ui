@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { type Column, FTable } from 'naive-fusion-ui'
+import { type Column, FTable } from 'n-fusion-ui'
 import { ref } from 'vue'
 
 interface User {

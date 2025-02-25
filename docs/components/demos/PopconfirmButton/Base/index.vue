@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { FPopconfirmButton } from 'naive-fusion-ui'
+import { FPopconfirmButton } from 'n-fusion-ui'
 import { useMessage } from 'naive-ui'
 
 const msg = useMessage()

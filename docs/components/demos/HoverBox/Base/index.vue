@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { FHoverBox } from 'naive-fusion-ui'
+import { FHoverBox } from 'n-fusion-ui'
 </script>
 
 <template>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { FFloatingLabelInput } from 'naive-fusion-ui'
+import { FFloatingLabelInput } from 'n-fusion-ui'
 import { ref } from 'vue'
 
 const modelValue = ref<string>('')
