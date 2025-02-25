@@ -6,8 +6,8 @@ export type NaiveUISize = 'small' | 'medium' | 'large'
 
 export interface AsyncCompProps<T> {
   // query related
-  queryFn: (query: QueryTemplate<T>) => Promise<RequestResult<PageResult<T>>>
-  queryFields: WhereQueryItem<T>[]
+  queryFn?: (query: QueryTemplate<T>) => Promise<RequestResult<PageResult<T>>>
+  queryFields?: WhereQueryItem<T>[]
   queryDebounceDelay?: number
   extraWhereQuery?: WhereQuery<T>
   extraOrderQuery?: OrderQuery<T>

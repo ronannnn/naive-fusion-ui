@@ -1,7 +1,7 @@
 import type { NaiveUISize } from '@/shared'
 
 export interface FloatingLabelProps {
-  value: string | [string, string] | undefined | null
+  isEmptyValue?: boolean
   focused?: boolean
   size?: NaiveUISize
   hasPrefix?: boolean

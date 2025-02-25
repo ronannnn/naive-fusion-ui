@@ -65,7 +65,7 @@ defineExpose({ focus })
       </template>
     </NInput>
     <FFloatingLabel
-      :value="props.value"
+      :is-empty-value="isEmptyString(props.value)"
       :focused="inputFocus"
       :has-prefix="Boolean(slots.prefix) || !isEmptyString(props.prefixIconClass)"
       :size="size"

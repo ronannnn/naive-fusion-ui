@@ -1,6 +1,7 @@
 <script setup lang="ts">
+import defu from 'defu'
 import { getNaiveColor, saveColorVarsToHtml } from 'naive-fusion-ui'
-import { darkTheme, NConfigProvider, NMessageProvider } from 'naive-ui'
+import { darkTheme, type GlobalThemeOverrides, NConfigProvider, NMessageProvider } from 'naive-ui'
 import { useData } from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
 import { computed, onMounted } from 'vue'
@@ -15,12 +16,23 @@ const themeColor = '#6366f1'
 onMounted(() => saveColorVarsToHtml({
   primary: themeColor,
 }))
+const naiveThemeOverrides = computed<GlobalThemeOverrides>(() => (defu(
+  getNaiveColor(themeColor).value,
+  {
+    common: {
+      borderRadius: '6px',
+    },
+    Tag: {
+      borderRadius: '6px',
+    },
+  },
+)))
 </script>
 
 <template>
   <NConfigProvider
     :theme="naiveTheme"
-    :theme-overrides="getNaiveColor(themeColor).value"
+    :theme-overrides="naiveThemeOverrides"
   >
     <NMessageProvider>
       <Layout />

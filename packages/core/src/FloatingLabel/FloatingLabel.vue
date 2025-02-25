@@ -4,8 +4,7 @@ import { computed } from 'vue'
 
 const props = defineProps<FloatingLabelProps>()
 
-const isValueEmpty = computed(() => (props.value?.length ?? 0) === 0)
-const moveUp = computed(() => props.focused || !isValueEmpty.value)
+const moveUp = computed(() => props.focused || !props.isEmptyValue)
 const labelStartClass = computed<string>(() => {
   // 有prefix内容且没有movedUp时，设置的start需要有offset
   const setLabelOffset = props.hasPrefix && !moveUp.value

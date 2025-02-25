@@ -2,7 +2,7 @@
 @import "naive-fusion-ui";
 
 @plugin "@iconify/tailwind4" {
-  prefixes: tabler;
+  prefixes: tabler, mdi;
 }
 
 @custom-variant dark (&:where(.dark, .dark *));

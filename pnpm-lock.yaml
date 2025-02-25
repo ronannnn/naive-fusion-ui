@@ -54,6 +54,9 @@ importers:
         specifier: ^3.5.13
         version: 3.5.13(typescript@5.7.3)
     devDependencies:
+      '@iconify-json/mdi':
+        specifier: ^1.2.3
+        version: 1.2.3
       '@iconify-json/tabler':
         specifier: ^1.1.120
         version: 1.2.14
@@ -121,12 +124,6 @@ importers:
         specifier: ^9.14.0
         version: 9.14.2(vue@3.5.13(typescript@5.7.3))
     devDependencies:
-      '@iconify-json/mdi':
-        specifier: ^1.1.68
-        version: 1.2.3
-      '@iconify-json/tabler':
-        specifier: ^1.1.120
-        version: 1.2.14
       '@tsconfig/node18':
         specifier: ^18.2.4
         version: 18.2.4
@@ -154,9 +151,6 @@ importers:
       vue:
         specifier: ^3.5.13
         version: 3.5.13(typescript@5.7.3)
-      vue-component-type-helpers:
-        specifier: ^2.2.0
-        version: 2.2.0
       vue-tsc:
         specifier: ^2.2.0
         version: 2.2.0(typescript@5.7.3)
@@ -3957,9 +3951,6 @@ packages:
 
   vscode-uri@3.0.8:
     resolution: {integrity: sha512-AyFQ0EVmsOZOlAnxoFOGOq1SQDWAB7C6aqMGS23svWAllfOaxbuFvcT8D1i8z3Gyn8fraVeZNNmN6e9bxxXkKw==}
-
-  vue-component-type-helpers@2.2.0:
-    resolution: {integrity: sha512-cYrAnv2me7bPDcg9kIcGwjJiSB6Qyi08+jLDo9yuvoFQjzHiPTzML7RnkJB1+3P6KMsX/KbCD4QE3Tv/knEllw==}
 
   vue-demi@0.14.10:
     resolution: {integrity: sha512-nMZBOwuzabUO0nLgIcc6rycZEebF6eeUfaiQx9+WSk8e29IbLvPU9feI6tqW4kTo3hvoYAJkMh8n8D0fuISphg==}
@@ -8169,8 +8160,6 @@ snapshots:
       vue: 3.5.13(typescript@5.7.3)
 
   vscode-uri@3.0.8: {}
-
-  vue-component-type-helpers@2.2.0: {}
 
   vue-demi@0.14.10(vue@3.5.13(typescript@5.7.3)):
     dependencies:

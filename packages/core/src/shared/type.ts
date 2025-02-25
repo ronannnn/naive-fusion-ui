@@ -1,5 +1,6 @@
 import dayjs from 'dayjs'
 import { isEqual } from 'lodash'
+import { computed, ref, type Ref } from 'vue'
 
 export function useType() {
   const removeDuplicates = <T>(arr: (keyof T)[]): (keyof T)[] => {
@@ -12,6 +13,23 @@ export function useType() {
 
 export function noDupPrimitiveArray(arr: any[]): any[] {
   return [...new Set(arr)]
+}
+
+export function useArraySet<T>() {
+  const set = ref<Set<T>>(new Set()) as Ref<Set<T>>
+  const array = computed<T[]>({
+    get() {
+      return Array.from(new Set(set.value.keys()))
+    },
+    set(value) {
+      set.value = new Set(value)
+    },
+  })
+
+  return {
+    set,
+    array,
+  }
 }
 
 export const dataTypeLabels: { [K in TypeUtil.DataTypeStringKey]: TypeUtil.DataTypeString<K> } = {

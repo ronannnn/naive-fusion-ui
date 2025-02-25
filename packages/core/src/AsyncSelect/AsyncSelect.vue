@@ -12,6 +12,7 @@ const props = withDefaults(defineProps<AsyncSelectProps<any>>(), {
   size: 'small',
   queryDebounceDelay: 512,
 })
+const initModel = defineModel<any>('initModel', { required: false })
 const value = defineModel<any>('value')
 
 const selectRef = ref<SelectInst | null>(null)
@@ -20,10 +21,10 @@ const { querying, startQuerying, endQuerying } = useQuerying()
 const queriedData = ref<any[]>([])
 const allData = computed(() => {
   const newQueriedData = [...queriedData.value]
-  if (props.initModel) {
-    if (Array.isArray(props.initModel)) {
+  if (initModel.value) {
+    if (Array.isArray(initModel.value)) {
       // initModel如果在newQueriedData中的存在则不添加，否则添加到最前面
-      props.initModel.forEach((item) => {
+      initModel.value.forEach((item) => {
         const initModelIndex = newQueriedData.findIndex(p => p[props.valueField] === item[props.valueField])
         if (initModelIndex === -1) {
           newQueriedData.unshift(item)
@@ -31,11 +32,11 @@ const allData = computed(() => {
       })
     }
     else {
-      const initModelIndex = newQueriedData.findIndex(p => props.initModel && p[props.valueField] === props.initModel[props.valueField])
+      const initModelIndex = newQueriedData.findIndex(p => initModel.value && p[props.valueField] === initModel.value[props.valueField])
       if (initModelIndex !== -1) {
         newQueriedData.splice(initModelIndex, 1)
       }
-      newQueriedData.unshift(props.initModel)
+      newQueriedData.unshift(initModel.value)
     }
   }
   return newQueriedData
@@ -65,7 +66,7 @@ async function handleQuery(queryStr: string) {
     const whereQuery: WhereQuery<any> = props.extraWhereQuery ?? []
     if (!isEmptyString(queryStr)) {
       const queryItems: WhereQueryItem<any>[] = []
-      props.queryFields.forEach((field) => {
+      props.queryFields?.forEach((field) => {
         queryItems.push({ ...field, value: queryStr })
       })
       whereQuery.push({ andOr: 'and', items: queryItems })
@@ -74,7 +75,7 @@ async function handleQuery(queryStr: string) {
       pagination: { pageNum: 1, pageSize: 10 },
       orderQuery: props.extraOrderQuery,
       whereQuery,
-      selectQuery: props.distinct ? props.queryFields.map(queryField => ({ field: queryField.field, distinct: true })) : undefined,
+      selectQuery: props.distinct ? props.queryFields?.map(queryField => ({ field: queryField.field, distinct: true })) : undefined,
       skipCount: props.distinct,
     })
     if (result.data) {
@@ -112,6 +113,8 @@ function onSelect(newVal: any) {
       return
     }
   }
+  initModel.value = triggerredData
+
   props.triggerAfterSelected(triggerredData)
 }
 const renderLabel: SelectProps['renderLabel'] = (option: SelectOption) => {

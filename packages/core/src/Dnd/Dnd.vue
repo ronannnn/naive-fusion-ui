@@ -2,23 +2,24 @@
 import type { DndProps } from './types'
 import { VueDraggable } from 'vue-draggable-plus'
 
-withDefaults(defineProps<DndProps>(), {
+const props = withDefaults(defineProps<DndProps>(), {
   dndGhostClass: 'opacity-32',
 })
 const model = defineModel<any>()
 </script>
 
 <template>
-  <div>
+  <div :class="props.class">
     <slot name="header" />
     <VueDraggable
       v-model="model"
       :class="dndClass"
-      :animation="200"
+      :animation="300"
       :handle="handle"
       :group="group"
       :ghost-class="dndGhostClass"
       :drag-class="dndDragClass"
+      :direction="direction"
       @add="onAfterDrag"
     >
       <slot />

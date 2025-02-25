@@ -40,7 +40,7 @@ async function handleQuery() {
     const whereQuery: WhereQuery<any> = props.extraWhereQuery ?? []
     if (!isEmptyString(value.value)) {
       const queryItems: WhereQueryItem<any>[] = []
-      props.queryFields.forEach((field) => {
+      props.queryFields?.forEach((field) => {
         queryItems.push({ ...field, value: value.value })
       })
       whereQuery.push({ andOr: 'and', items: queryItems })
@@ -49,7 +49,7 @@ async function handleQuery() {
       pagination: { pageNum: 1, pageSize: 10 },
       orderQuery: props.extraOrderQuery,
       whereQuery,
-      selectQuery: props.distinct ? props.queryFields.map(queryField => ({ field: queryField.field, distinct: true })) : undefined,
+      selectQuery: props.distinct ? props.queryFields?.map(queryField => ({ field: queryField.field, distinct: true })) : undefined,
       skipCount: props.distinct,
     })
     if (result.data) {

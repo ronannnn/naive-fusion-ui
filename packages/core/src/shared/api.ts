@@ -62,6 +62,7 @@ export interface StatsItem {
   rmk?: string
 }
 
-export interface ModelWithId {
-  id: number
+// -- biz request ---
+export interface BatchDeleteCommand {
+  ids: number[]
 }
