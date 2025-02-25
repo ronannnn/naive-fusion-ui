@@ -1,4 +1,4 @@
-<script setup lang="ts" generic="T extends { id: number }">
+<script setup lang="ts">
 import type { SelectInst, SelectOption, SelectProps } from 'naive-ui'
 import type { AsyncSelectProps } from './types'
 import { isEmptyString, useQuerying, type WhereQuery, type WhereQueryItem } from '@/shared'
@@ -6,9 +6,9 @@ import { useDebounceFn } from '@vueuse/core'
 import { NSelect } from 'naive-ui'
 import { computed, ref } from 'vue'
 
-const props = withDefaults(defineProps<AsyncSelectProps<T>>(), {
+const props = withDefaults(defineProps<AsyncSelectProps<any>>(), {
   valueField: 'id',
-  orderQuery: () => [{ field: 'createdAt', order: 'desc' }],
+  extraOrderQuery: () => [{ field: 'createdAt', order: 'desc' }],
   size: 'small',
   queryDebounceDelay: 512,
 })
@@ -17,28 +17,28 @@ const value = defineModel<any>('value')
 const selectRef = ref<SelectInst | null>(null)
 
 const { querying, startQuerying, endQuerying } = useQuerying()
-const searchedData = ref<any[]>([])
+const queriedData = ref<any[]>([])
 const allData = computed(() => {
-  const newSearchedData = [...searchedData.value]
+  const newQueriedData = [...queriedData.value]
   if (props.initModel) {
     if (Array.isArray(props.initModel)) {
-      // initModel如果在newSearchedData中的存在则不添加，否则添加到最前面
+      // initModel如果在newQueriedData中的存在则不添加，否则添加到最前面
       props.initModel.forEach((item) => {
-        const initModelIndex = newSearchedData.findIndex(p => p[props.valueField] === item[props.valueField])
+        const initModelIndex = newQueriedData.findIndex(p => p[props.valueField] === item[props.valueField])
         if (initModelIndex === -1) {
-          newSearchedData.unshift(item)
+          newQueriedData.unshift(item)
         }
       })
     }
     else {
-      const initModelIndex = newSearchedData.findIndex(p => props.initModel && p[props.valueField as keyof T] === props.initModel[props.valueField as keyof T])
+      const initModelIndex = newQueriedData.findIndex(p => props.initModel && p[props.valueField] === props.initModel[props.valueField])
       if (initModelIndex !== -1) {
-        newSearchedData.splice(initModelIndex, 1)
+        newQueriedData.splice(initModelIndex, 1)
       }
-      newSearchedData.unshift(props.initModel)
+      newQueriedData.unshift(props.initModel)
     }
   }
-  return newSearchedData
+  return newQueriedData
 })
 const allOptions = computed(() => allData.value
   .map(p => ({ label: p[props.labelField], value: p[props.valueField] }))
@@ -46,27 +46,27 @@ const allOptions = computed(() => allData.value
 )
 const selected = ref(false)
 const focused = ref(false)
-async function handleSearch(searchStr: string) {
+async function handleQuery(queryStr: string) {
   if (!props.queryFn) {
-    console.error('searchFn is required')
+    console.error('queryFn is required')
     return
   }
-  // if blur, do not search
+  // if blur, do not query
   if (!focused.value) {
     return
   }
-  // if selected, do not search
+  // if selected, do not query
   if (selected.value) {
     selected.value = false
     return
   }
   startQuerying()
   try {
-    const whereQuery: WhereQuery<T> = props.extraWhereQuery ?? []
-    if (!isEmptyString(searchStr)) {
-      const queryItems: WhereQueryItem<T>[] = []
+    const whereQuery: WhereQuery<any> = props.extraWhereQuery ?? []
+    if (!isEmptyString(queryStr)) {
+      const queryItems: WhereQueryItem<any>[] = []
       props.queryFields.forEach((field) => {
-        queryItems.push({ ...field, value: searchStr })
+        queryItems.push({ ...field, value: queryStr })
       })
       whereQuery.push({ andOr: 'and', items: queryItems })
     }
@@ -74,16 +74,18 @@ async function handleSearch(searchStr: string) {
       pagination: { pageNum: 1, pageSize: 10 },
       orderQuery: props.extraOrderQuery,
       whereQuery,
+      selectQuery: props.distinct ? props.queryFields.map(queryField => ({ field: queryField.field, distinct: true })) : undefined,
+      skipCount: props.distinct,
     })
     if (result.data) {
-      searchedData.value = result.data.list
+      queriedData.value = result.data.list
     }
   }
   finally {
     endQuerying()
   }
 }
-const debouncedSearchFn = useDebounceFn(handleSearch, props.queryDebounceDelay)
+const debouncedQueryFn = useDebounceFn(handleQuery, props.queryDebounceDelay)
 function onSelect(newVal: any) {
   selected.value = true
   value.value = newVal
@@ -138,16 +140,20 @@ defineExpose({ focus: () => selectRef.value?.focus() })
     :multiple="multiple"
     :disabled="disabled"
     @update:value="onSelect"
-    @search="debouncedSearchFn"
+    @search="debouncedQueryFn"
     @select="onSelect"
     @focus="async () => {
       focused = true
-      await handleSearch('')
+      await handleQuery('')
     }"
     @clear="() => {
-      searchedData = []
+      queriedData = []
       value = null
     }"
     @blur="focused = false"
-  />
+  >
+    <template v-if="empty" #empty>
+      <component :is="empty" />
+    </template>
+  </NSelect>
 </template>

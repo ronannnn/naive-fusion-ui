@@ -1,3 +1,4 @@
+export * from './AsyncAutoComplete'
 export * from './AsyncSelect'
 export * from './button'
 export * from './Dnd'

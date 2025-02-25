@@ -101,6 +101,7 @@ export default defineConfig({
           { text: 'Dnd', link: '/docs/components/dnd' },
           { text: 'Tab', link: '/docs/components/tab' },
           { text: 'Async Select', link: '/docs/components/async-select' },
+          { text: 'Async Auto Complete', link: '/docs/components/async-auto-complete' },
           { text: 'Floating Label Input', link: '/docs/components/floating-label-input' },
           {
             text: 'Layout',
