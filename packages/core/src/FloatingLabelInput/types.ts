@@ -1,3 +1,4 @@
+import type { NaiveUISize } from '@/shared'
 import type { InputProps } from 'naive-ui'
 
 export interface FloatingLabelInputProps {
@@ -12,7 +13,7 @@ export interface FloatingLabelInputProps {
   placeholder?: InputProps['placeholder']
   readonly?: InputProps['readonly']
   round?: InputProps['round']
-  size?: InputProps['size']
+  size?: NaiveUISize
   value?: InputProps['value']
   onChange?: InputProps['onChange']
   onClear?: InputProps['onClear']
