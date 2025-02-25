@@ -44,7 +44,8 @@
   "typings": "./dist/index.d.ts",
   "files": [
     "./LICENSE",
-    "./dist"
+    "./dist",
+    "package.json"
   ],
   "scripts": {
     "dev": "vite",
