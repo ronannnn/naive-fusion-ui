@@ -2,7 +2,7 @@ import type { OrderQuery, PageResult, QueryTemplate, RequestResult, WhereQuery, 
 import type { SelectProps } from 'naive-ui'
 import type { VNode } from 'vue'
 
-export interface SearchSelectProps<T> {
+export interface AsyncSelectProps<T> {
   initModel?: T
 
   // query related

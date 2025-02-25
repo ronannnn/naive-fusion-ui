@@ -1,12 +1,12 @@
 <script setup lang="ts" generic="T extends { id: number }">
 import type { SelectInst, SelectOption, SelectProps } from 'naive-ui'
-import type { SearchSelectProps } from './types'
+import type { AsyncSelectProps } from './types'
 import { isEmptyString, useQuerying, type WhereQuery, type WhereQueryItem } from '@/shared'
 import { useDebounceFn } from '@vueuse/core'
 import { NSelect } from 'naive-ui'
 import { computed, ref } from 'vue'
 
-const props = withDefaults(defineProps<SearchSelectProps<T>>(), {
+const props = withDefaults(defineProps<AsyncSelectProps<T>>(), {
   valueField: 'id',
   orderQuery: () => [{ field: 'createdAt', order: 'desc' }],
   size: 'small',
