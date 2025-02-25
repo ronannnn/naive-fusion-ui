@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { AutoCompleteOption, AutoCompleteProps, SelectOption } from 'naive-ui'
+import type { AutoCompleteInst, AutoCompleteOption, AutoCompleteProps, SelectOption } from 'naive-ui'
 import type { AsyncAutoCompleteProps } from './types'
 import { isEmptyString, isString, useQuerying, type WhereQuery, type WhereQueryItem } from '@/shared'
 import { useDebounceFn } from '@vueuse/core'
@@ -14,6 +14,8 @@ const props = withDefaults(defineProps<AsyncAutoCompleteProps<any>>(), {
   empty: '未查询到数据，该项可自由填写',
 })
 const value = defineModel<string | null>('value')
+
+const acRef = ref<AutoCompleteInst | null>(null)
 
 const { querying, startQuerying, endQuerying } = useQuerying()
 const queriedData = ref<any[]>([])
@@ -86,10 +88,16 @@ const renderLabel: AutoCompleteProps['renderLabel'] = (option: SelectOption) => 
   }
   return props.renderOptionFromData ? props.renderOptionFromData(foundModel) : option.label as string
 }
+
+defineExpose({
+  focus: () => acRef.value?.focus(),
+  focused,
+})
 </script>
 
 <template>
   <NAutoComplete
+    ref="acRef"
     :value="value ?? undefined"
     :size="size"
     :options="queriedOptions"
@@ -111,10 +119,14 @@ const renderLabel: AutoCompleteProps['renderLabel'] = (option: SelectOption) => 
     @update:value="value = $event"
   >
     <template #prefix>
-      <slot name="prefix" />
+      <slot name="prefix">
+        <div v-if="prefixIconClass" class="iconify" :class="prefixIconClass" />
+      </slot>
     </template>
     <template #suffix>
-      <slot name="suffix" />
+      <slot name="suffix">
+        <div v-if="suffixIconClass" class="iconify" :class="suffixIconClass" />
+      </slot>
     </template>
     <template v-if="Boolean(empty)" #empty>
       <NEmpty v-if="isString(empty)">

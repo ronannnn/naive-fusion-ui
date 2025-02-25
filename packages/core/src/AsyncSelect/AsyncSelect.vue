@@ -122,7 +122,10 @@ const renderLabel: SelectProps['renderLabel'] = (option: SelectOption) => {
   return props.renderOptionFromData ? props.renderOptionFromData(foundModel) : option.label as string
 }
 
-defineExpose({ focus: () => selectRef.value?.focus() })
+defineExpose({
+  focus: () => selectRef.value?.focus(),
+  focused,
+})
 </script>
 
 <template>
