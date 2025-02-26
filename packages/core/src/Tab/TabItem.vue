@@ -17,12 +17,12 @@ function handleClose(e: MouseEvent) {
 
 <template>
   <div
-    class="min-w-16 flex justify-center items-center whitespace-nowrap border border-b-0 rounded-t-md px-3 transition-all hover:cursor-pointer"
+    class="min-w-16 flex-center whitespace-nowrap border border-b-0 rounded-t-md px-3 transition-all hover:cursor-pointer"
     :class="active ? 'text-primary bg-primary/10 border-primary/0 dark:b-primary-800' : 'border-gray-100 dark:border-gray-800 hover:bg-[#f6f6f6] dark:hover:bg-[#333]'"
   >
     <div class="iconify mr-3" :class="tab.icon" />
     <slot />
-    <div class="flex justify-center items-center ml-2">
+    <div class="flex-center ml-2">
       <NButton
         v-if="tab.closable"
         :type="active ? 'primary' : undefined"

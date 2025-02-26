@@ -20,7 +20,7 @@ const listProps = computed(() => {
 </script>
 
 <template>
-  <div class="flex" :style="{ height: `${tabHeight}px` }">
+  <div class="flex-y-center w-full" :style="{ height: `${tabHeight}px` }">
     <slot name="prefix" />
     <FTabList
       v-bind="listProps"

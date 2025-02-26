@@ -17,7 +17,7 @@ const showTooltip = computed(() => Boolean(props.tooltipContent))
   <div class="h-7">
     <NTooltip :placement="placement" trigger="hover" :disabled="!showTooltip">
       <template #trigger>
-        <div class="h-full flex justify-center items-center cursor-pointer rounded px-2 transition-all hover:bg-[#f6f6f6] dark:hover:bg-[#333]">
+        <div class="h-full flex-center cursor-pointer rounded px-2 transition-all hover:bg-[#f6f6f6] dark:hover:bg-[#333]">
           <slot />
         </div>
       </template>
