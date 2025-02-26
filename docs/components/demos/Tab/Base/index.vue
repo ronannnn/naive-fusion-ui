@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { TabItemProps } from 'n-fusion-ui'
-import { FTab } from 'n-fusion-ui'
+import { FTab, FTabSelector } from 'n-fusion-ui'
 import { ref } from 'vue'
 
 const items = ref<TabItemProps[]>([
@@ -32,8 +32,18 @@ function closeTab(id: string) {
     :tab-height="40"
     :tab-item-height="32"
     :tab-items="items"
-    class="w-full border-b border-b-primary-200 dark:border-b-primary-800"
+    class="border-b border-b-primary-200 dark:border-b-primary-800 bg-red-50/30"
     @close-tab="closeTab"
     @switch-tab="id => activeTabId = id"
-  />
+  >
+    <template #suffix>
+      <div class="ml-auto flex-y-center pl-2">
+        <FTabSelector
+          :active-tab-id="activeTabId"
+          :tab-items="items"
+          @switch-tab="id => activeTabId = id"
+        />
+      </div>
+    </template>
+  </FTab>
 </template>
