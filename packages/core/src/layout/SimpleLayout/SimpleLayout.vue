@@ -123,26 +123,18 @@ onMounted(() => {
 
     <!-- header + tab + content -->
     <template #2>
-      <div class="grow flex flex-col overflow-x-hidden">
+      <div class="flex-1 flex-col overflow-x-hidden">
         <template v-if="headerVisible">
           <header
             v-show="!isFullContent"
             class="border-b border-primary-100 dark:border-primary-900"
-            :style="{
-              height: `${headerHeight}px`,
-            }"
           >
             <slot name="header" />
           </header>
         </template>
 
         <template v-if="tabVisible">
-          <div
-            class="border-b border-primary-100 dark:border-primary-900"
-            :style="{
-              height: `${tabHeight}px`,
-            }"
-          >
+          <div class="border-b border-primary-100 dark:border-primary-900">
             <slot name="tab" />
           </div>
         </template>

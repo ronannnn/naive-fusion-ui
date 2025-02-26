@@ -12,12 +12,6 @@ export interface SimpleLayoutHeaderConfig {
    * @default ''
    */
   headerClass?: string
-  /**
-   * Header height
-   *
-   * @default 48px
-   */
-  headerHeight?: number
 }
 
 /** Tab config */
@@ -34,18 +28,6 @@ export interface SimpleLayoutTabConfig {
    * @default ''
    */
   tabClass?: string
-  /**
-   * Tab height
-   *
-   * @default 42px
-   */
-  tabHeight?: number
-  /**
-   * Tab item height
-   *
-   * @default 32px
-   */
-  tabItemHeight?: number
 }
 
 /** Sider config */
