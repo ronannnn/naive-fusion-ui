@@ -1,7 +1,7 @@
 {
   "name": "n-fusion-ui",
   "type": "module",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "private": true,
   "packageManager": "pnpm@9.15.4",
   "author": "Ronan Chen",
@@ -25,7 +25,7 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "bumpp": "bumpp package.json packages/*/package.json docs/package.json",
-    "pub:release": "pnpm build && cd packages/core && pnpm pub:release"
+    "pub:release": "pnpm bumpp && pnpm build && cd packages/core && pnpm pub:release"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^3.15.0",
