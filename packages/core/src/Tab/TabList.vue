@@ -112,10 +112,7 @@ watch(
         :active="activeTabId === tabItem.id"
         :tab="tabItem"
         @click="emit('switchTab', tabItem.id)"
-        @close="() => {
-          emit('closeTab', tabItem.id)
-          console.log(tabItem.id)
-        }"
+        @close="() => emit('closeTab', tabItem.id)"
         @contextmenu="handleContextMenu($event, tabItem.id)"
       >
         {{ tabItem.label }}

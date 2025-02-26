@@ -9,16 +9,13 @@ defineProps<{
 const emit = defineEmits<{
   close: []
 }>()
-function handleClose(e: MouseEvent) {
-  e.stopPropagation()
-  emit('close')
-}
 </script>
 
 <template>
   <div
     class="min-w-16 flex-center whitespace-nowrap border border-b-0 rounded-t-md px-3 transition-all hover:cursor-pointer"
     :class="active ? 'text-primary bg-primary/10 border-primary/0 dark:b-primary-800' : 'border-gray-100 dark:border-gray-800 hover:bg-[#f6f6f6] dark:hover:bg-[#333]'"
+    @mouseup.middle="emit('close')"
   >
     <div class="iconify mr-3" :class="tab.icon" />
     <slot />
@@ -31,7 +28,7 @@ function handleClose(e: MouseEvent) {
         quaternary
       >
         <template #icon>
-          <div class="iconify tabler--x" @click="handleClose" />
+          <div class="iconify tabler--x" @click="emit('close')" />
         </template>
       </NButton>
     </div>

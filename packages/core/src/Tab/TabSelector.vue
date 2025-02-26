@@ -30,7 +30,7 @@ const options = computed<DropdownOption[]>(() => {
 <template>
   <NDropdown :value="activeTabId" :options="options" @select="key => emit('switchTab', key)">
     <FHoverBox>
-      <div class="iconify tabler--menu-2 text-4" />
+      <div class="iconify tabler--menu-2 text-base" />
     </FHoverBox>
   </NDropdown>
 </template>
