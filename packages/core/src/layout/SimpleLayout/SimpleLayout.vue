@@ -140,7 +140,7 @@ onMounted(() => {
         </template>
 
         <!-- content -->
-        <div class="flex-1 bg-primary-50/30 dark:bg-neutral-900">
+        <div class="flex-1 overflow-y-hidden bg-primary-50/30 dark:bg-neutral-900">
           <slot />
           <NBackTop />
         </div>
